@@ -1,0 +1,27 @@
+project --topLevelPackage ru.rumter.kfr.koala --java 7 --projectName koala
+
+persistence setup --provider HIBERNATE --database POSTGRES --databaseName koala
+
+entity jpa --class ~.domain.entity.exp.ExpCategory --identifierType java.lang.Long --identifierColumn ec_id --table exp_category
+#field number --type java.lang.Long --fieldName id --column ec_id --notNull
+field string --fieldName title --column title --notNull
+
+entity jpa --class ~.domain.entity.exp.Expense --identifierType java.lang.Long --identifierColumn exp_id --table exp_expense
+#field number --type java.lang.Long --fieldName id --column exp_id --notNull
+field reference --type ~.domain.entity.exp.ExpCategory --fieldName expCategory --joinColumnName ec_id --notNull
+field date --type java.util.Date --fieldName occured --column occured --notNull
+field number --type java.lang.Long --fieldName amount --column amount --notNull
+field string --fieldName description --column description
+
+entity jpa --class ~.domain.entity.inc.IncCategory --identifierType java.lang.Long --identifierColumn ic_id --table inc_category
+#field number --type java.lang.Long --fieldName id --column ic_id --notNull
+field string --fieldName title --column title --notNull
+
+entity jpa --class ~.domain.entity.inc.Income --identifierType java.lang.Long --identifierColumn inc_id --table inc_income
+#field number --type java.lang.Long --fieldName id --column inc_id --notNull
+field reference --type ~.domain.entity.inc.IncCategory --fieldName incCategory --joinColumnName ic_id --notNull
+field date --type java.util.Date --fieldName occured --column occured --notNull
+field number --type java.lang.Long --fieldName amount --column amount --notNull
+field string --fieldName description --column description
+
+controller all --package ~.web
