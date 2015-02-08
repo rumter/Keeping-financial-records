@@ -2,14 +2,7 @@ package ru.rumter.kfr.koala.domain.entity.exp;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,20 +12,20 @@ public class Expense {
 
 	/**
      */
-	@NotNull
+	@Id
 	@Column(name = "exp_id")
+	@SequenceGenerator(name = "exp_expense_seq", sequenceName = "exp_expense_seq", allocationSize = 1)
+    @GeneratedValue(generator = "exp_expense_seq")
 	private Long id;
 
 	/**
      */
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "ec_id")
 	private ExpCategory expCategory;
 
 	/**
      */
-	@NotNull
 	@Column(name = "occured")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(style = "M-")
@@ -40,7 +33,6 @@ public class Expense {
 
 	/**
      */
-	@NotNull
 	@Column(name = "amount")
 	private Long amount;
 

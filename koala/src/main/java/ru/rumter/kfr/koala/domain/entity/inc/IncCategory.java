@@ -1,9 +1,6 @@
 package ru.rumter.kfr.koala.domain.entity.inc;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "inc_category")
@@ -11,13 +8,14 @@ public class IncCategory {
 
 	/**
      */
-	@NotNull
+	@Id
 	@Column(name = "ic_id")
+	@SequenceGenerator(name = "inc_category_seq", sequenceName = "inc_category_seq", allocationSize = 1)
+    @GeneratedValue(generator = "inc_category_seq")
 	private Long id;
 
 	/**
      */
-	@NotNull
 	@Column(name = "title")
 	private String title;
 }
