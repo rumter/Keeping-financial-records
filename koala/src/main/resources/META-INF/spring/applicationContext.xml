@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-    
+
     <aop:aspectj-autoproxy/>
 
     <context:annotation-config/>
@@ -29,6 +29,8 @@
         </property>
     </bean>
 
+    <!-- Logging -->
+
     <bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="org.springframework.util.Log4jConfigurer"/>
         <property name="targetMethod" value="initLogging"/>
@@ -38,8 +40,10 @@
             </list>
         </property>
     </bean>
+
+    <!-- Hibernate -->
     
-    <!--<bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${database.driverClassName}"/>
         <property name="url" value="${database.url}"/>
         <property name="username" value="${database.username}"/>
@@ -60,8 +64,8 @@
     
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
     	<property name="sessionFactory" ref="sessionFactory" />
-    </bean>-->
+    </bean>
     
-    <!-- <tx:annotation-driven/> -->
+    <tx:annotation-driven/>
     
 </beans>

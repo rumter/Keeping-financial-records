@@ -13,38 +13,40 @@ repositories {
 	mavenCentral()
 }
 
-// properties
-def projectBuildSourceEncoding = 'UTF-8'
-def skipTests = 'false'
+ext {
+	// properties
+	projectBuildSourceEncoding = 'UTF-8'
+	skipTests = 'false'
 
-// versions
-def springVersion = '3.2.8.RELEASE'
-def springSecurityVersion = '3.2.8.RELEASE'
+	// versions
+	springVersion = '3.2.8.RELEASE'
+	springSecurityVersion = '3.2.8.RELEASE'
 
-def hibernateVersion = '4.3.6.Final'
-def hibernateJPAVersion = '1.0.0.Final'
-def postgresqlVersion = '9.1-901-1.jdbc4'
+	hibernateVersion = '4.2.8.Final'
+	hibernateJPAVersion = '1.0.0.Final'
+	postgresqlVersion = '9.1-901-1.jdbc4'
 
-def slf4jVersion = '1.7.5'
-def testngVersion = '6.8'
-def aspectjrtVersion = '1.7.3'
-def cglibVersion = '2.2'
-def jacksonCoreVersion = '2.1.5'
+	slf4jVersion = '1.7.5'
+	testngVersion = '6.8'
+	aspectjrtVersion = '1.7.3'
+	cglibVersion = '2.2'
+	jacksonCoreVersion = '2.1.5'
 
-def tomcat7Version = '2.2'
-def jettyVersion = '9.2.2.v20140723'
+	tomcat7Version = '2.2'
+	jettyVersion = '9.2.2.v20140723'
 
-def commonsLangVersion = '2.5'
-def commonsIOVersion = '2.1'
-def commonsDbcpVersion = '1.4'
-def commonsPoolVersion = '1.5.6'
+	commonsLangVersion = '2.5'
+	commonsIOVersion = '2.1'
+	commonsDbcpVersion = '1.4'
+	commonsPoolVersion = '1.5.6'
 
-// groups
-def springGroup = 'org.springframework'
-def aspectjGroup = 'org.aspectj'
-def slf4jGroup = 'org.slf4j'
-def jacksonCoreGroup = 'com.fasterxml.jackson.core'
-def jettyGroup = 'org.eclipse.jetty'
+	// groups
+	springGroup = 'org.springframework'
+	aspectjGroup = 'org.aspectj'
+	slf4jGroup = 'org.slf4j'
+	jacksonCoreGroup = 'com.fasterxml.jackson.core'
+	jettyGroup = 'org.eclipse.jetty'
+}
 
 dependencies {
 	// Servlet-api
@@ -53,57 +55,57 @@ dependencies {
 	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 
 	// Spring Core
-	compile "$springGroup:spring-core:$springVersion"
-	compile "$springGroup:spring-beans:$springVersion"
-	compile "$springGroup:spring-context:$springVersion"
-	compile "$springGroup:spring-orm:$springVersion"
-	compile "$springGroup:spring-tx:$springVersion"
+	compile "${springGroup}:spring-core:${springVersion}"
+	compile "${springGroup}:spring-beans:${springVersion}"
+	compile "${springGroup}:spring-context:${springVersion}"
+	compile "${springGroup}:spring-orm:${springVersion}"
+	compile "${springGroup}:spring-tx:${springVersion}"
 
 	// Spring Web
-	compile "$springGroup:spring-web:$springVersion"
-	compile "$springGroup:spring-webmvc:$springVersion"
+	compile "${springGroup}:spring-web:${springVersion}"
+	compile "${springGroup}:spring-webmvc:${springVersion}"
 
 	// Spring AOP + AspectJ
-	compile "$springGroup:spring-aop:$springVersion"
-	runtime "$springGroup:spring-aspects:$springVersion"
-	compile "$aspectjGroup:aspectjweaver:$aspectjrtVersion"
-	compile "$aspectjGroup:aspectjrt:$aspectjrtVersion"
+	compile "${springGroup}:spring-aop:${springVersion}"
+	runtime "${springGroup}:spring-aspects:${springVersion}"
+	compile "${aspectjGroup}:aspectjweaver:${aspectjrtVersion}"
+	compile "${aspectjGroup}:aspectjrt:${aspectjrtVersion}"
 
 	// PostgreSQL JDBC
-	compile "postgresql:postgresql:$postgresqlVersion"
+	compile "postgresql:postgresql:${postgresqlVersion}"
 
 	// Hibernate
-	compile "org.hibernate:hibernate-core:$hibernateVersion"
-	compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$hibernateJPAVersion"
-	compile "org.hibernate:hibernate-entitymanager:$hibernateVersion"
+	compile "org.hibernate:hibernate-core:${hibernateVersion}"
+	compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:${hibernateJPAVersion}"
+	compile "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
 
 	// CGlib
-	compile "cglib:cglib:$cglibVersion"
+	compile "cglib:cglib:${cglibVersion}"
 
 	// Logging
-	compile "$slf4jGroup:jcl-over-slf4j:$slf4jVersion"
-	compile "$slf4jGroup:slf4j-api:$slf4jVersion"
-	compile "$slf4jGroup:slf4j-log4j12:$slf4jVersion"
+	compile "${slf4jGroup}:jcl-over-slf4j:${slf4jVersion}"
+	compile "${slf4jGroup}:slf4j-api:${slf4jVersion}"
+	compile "${slf4jGroup}:slf4j-log4j12:${slf4jVersion}"
 
 	// Jackson
-	compile "$jacksonCoreGroup:jackson-databind:$jacksonCoreVersion"
-	compile "$jacksonCoreGroup:jackson-annotations:$jacksonCoreVersion"
+	compile "${jacksonCoreGroup}:jackson-databind:${jacksonCoreVersion}"
+	compile "${jacksonCoreGroup}:jackson-annotations:${jacksonCoreVersion}"
 
 	// Jetty
-	compile "$jettyGroup:jetty-server:$jettyVersion"
-	compile "$jettyGroup:jetty-webapp:$jettyVersion"
+	compile "${jettyGroup}:jetty-server:${jettyVersion}"
+	compile "${jettyGroup}:jetty-webapp:${jettyVersion}"
 
 	// Apache Commons
-	compile "commons-lang:commons-lang:$commonsLangVersion"
-	compile "commons-io:commons-io:$commonsIOVersion"
-	compile "commons-dbcp:commons-dbcp:$commonsDbcpVersion"
-	compile "commons-pool:commons-pool:$commonsPoolVersion"
+	compile "commons-lang:commons-lang:${commonsLangVersion}"
+	compile "commons-io:commons-io:${commonsIOVersion}"
+	compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
+	compile "commons-pool:commons-pool:${commonsPoolVersion}"
 
 	// Spring Test
-	testCompile "$springGroup:spring-test:$springVersion"
+	testCompile "${springGroup}:spring-test:${springVersion}"
 
 	// Test NG
-	testCompile "org.testng:testng:$testngVersion"
+	testCompile "org.testng:testng:${testngVersion}"
 }
 
 sourceSets.main.compileClasspath += configurations.providedCompile
