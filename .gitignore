@@ -5,6 +5,10 @@
 *.project
 .settings
 
+# IDEA
+*.iml
+.idea
+
 # Maven
 target
 
