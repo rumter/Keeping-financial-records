@@ -11,16 +11,15 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import ru.rumter.kfr.koala.domain.entity.AbstractEntity;
+
 /**
  * Категория расходов
  */
 @Entity
 @Table(name = "exp_category")
-public class ExpCategory {
+public class ExpCategory extends AbstractEntity {
 
-	/**
-	 * Идентификатор
-	 */
 	private Long id;
 
 	/**

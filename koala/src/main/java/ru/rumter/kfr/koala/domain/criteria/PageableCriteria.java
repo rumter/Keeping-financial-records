@@ -8,23 +8,28 @@ package ru.rumter.kfr.koala.domain.criteria;
  */
 public class PageableCriteria implements Criteria {
 
-	private long start;
-	private long count;
+	private int start;
+	private int count;
 	private Sort sort;
 
-	public long getStart() {
+	public PageableCriteria() {
+		start = 0;
+		count = 0;
+	}
+
+	public int getStart() {
 		return start;
 	}
 
-	public void setStart(long start) {
+	public void setStart(int start) {
 		this.start = start;
 	}
 
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
 
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 

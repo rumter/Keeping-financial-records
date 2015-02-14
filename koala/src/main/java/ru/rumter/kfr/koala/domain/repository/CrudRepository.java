@@ -55,7 +55,14 @@ public interface CrudRepository<T> extends Repository {
 	 * @param entity
 	 * @return updated entity
 	 */
-	T update(T entity);
+	void update(T entity);
+
+	/**
+	 * Save or update entity
+	 * 
+	 * @param entity
+	 */
+	void saveOrUpdate(T entity);
 
 	/**
 	 * Remove entity

@@ -17,16 +17,15 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import ru.rumter.kfr.koala.domain.entity.AbstractEntity;
+
 /**
  * Запись доходов
  */
 @Entity
 @Table(name = "inc_income")
-public class Income {
+public class Income extends AbstractEntity {
 
-	/**
-	 * Идентификатор
-	 */
 	private Long id;
 
 	/**
@@ -118,8 +117,7 @@ public class Income {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append(id).append(incCategory)
-				.append(occured).append(amount).append(description).toString();
+		return new ToStringBuilder(this).append(id).append(incCategory).append(occured).append(amount).append(description).toString();
 	}
 
 }
