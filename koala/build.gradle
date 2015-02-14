@@ -97,6 +97,7 @@ dependencies {
 
 	// Apache Commons
 	compile "commons-lang:commons-lang:${commonsLangVersion}"
+	compile "org.apache.commons:commons-lang3:3.0"
 	compile "commons-io:commons-io:${commonsIOVersion}"
 	compile "commons-dbcp:commons-dbcp:${commonsDbcpVersion}"
 	compile "commons-pool:commons-pool:${commonsPoolVersion}"
