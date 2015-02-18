@@ -1,8 +1,10 @@
-Ext.define('Koala.view.MainPanel', {
+Ext.define('Koala.view.stream.StreamPanel', {
     extend: 'Ext.panel.Panel',
-    alias: 'view.MainPanel',
+    alias: 'view.stream.StreamPanel',
 
-    layout: 'fit',
+    requires: [
+        'Koala.view.stream.StreamController'
+    ],
 
     initComponent: function () {
         var me = this;
@@ -11,13 +13,16 @@ Ext.define('Koala.view.MainPanel', {
             items: [
                 {
                     xtype: 'panel',
-                    title: 'Koala',
-                    html: 'Hello world!'
+                    html: 'StreamPanel'
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    listeners: {
+        afterrender: 'onAfterRender'
     }
 
 });

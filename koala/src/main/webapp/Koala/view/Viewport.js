@@ -2,7 +2,7 @@ Ext.define('Koala.view.Viewport', {
     extend: 'Ext.container.Viewport',
 
     requires: [
-        'Koala.view.MainPanel'
+        'Koala.view.main.MainPanel'
     ],
 
     layout: 'fit',
@@ -13,7 +13,7 @@ Ext.define('Koala.view.Viewport', {
 
         Ext.applyIf(me, {
             items: [
-                Ext.create('view.MainPanel', {})
+                Ext.create('view.main.MainPanel', {})
             ]
         });
 
