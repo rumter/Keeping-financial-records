@@ -7,6 +7,8 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
         'Koala.view.incCategory.IncCategoryController'
     ],
 
+    controller: 'incCategory.IncCategoryController',
+
     initComponent: function () {
         var me = this;
 

@@ -6,6 +6,8 @@ Ext.define('Koala.view.expCategory.ExpCategoryPanel', {
         'Koala.view.expCategory.ExpCategoryController'
     ],
 
+    controller: 'expCategory.ExpCategoryController',
+
     initComponent: function () {
         var me = this;
 

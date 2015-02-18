@@ -6,6 +6,8 @@ Ext.define('Koala.view.stream.StreamPanel', {
         'Koala.view.stream.StreamController'
     ],
 
+    controller: 'stream.StreamController',
+
     initComponent: function () {
         var me = this;
 
