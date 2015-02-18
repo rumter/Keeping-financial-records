@@ -81,7 +81,7 @@ public abstract class AbstractCrudRepository<T extends AbstractEntity> implement
 		StringBuilder hql = new StringBuilder("FROM " + getEntityName());
 		if (criteria.getSort() != null) {
 			String direction = (criteria.getSort().getDirection() == SortDirectionEnum.ASC ? "ASC" : "DESC");
-			hql.append(" ORDER BY ").append(criteria.getSort().getField()).append(" ").append(direction);
+			hql.append(" ORDER BY ").append(criteria.getSort().getProperty()).append(" ").append(direction);
 		}
 
 		Query query = sessionFactory.getCurrentSession().createQuery(hql.toString());

@@ -2,33 +2,36 @@ package ru.rumter.kfr.koala.domain.criteria;
 
 public class Sort {
 
-	private String field;
-	private SortDirectionEnum direction;
+    private String property;
+    private SortDirectionEnum direction;
 
-	public Sort(String field) {
-		this.field = field;
-		this.direction = SortDirectionEnum.ASC;
-	}
+    public Sort() {
+    }
 
-	public Sort(String field, SortDirectionEnum direction) {
-		this.field = field;
-		this.direction = direction;
-	}
+    public Sort(String property) {
+        this.property = property;
+        this.direction = SortDirectionEnum.ASC;
+    }
 
-	public String getField() {
-		return field;
-	}
+    public Sort(String property, SortDirectionEnum direction) {
+        this.property = property;
+        this.direction = direction;
+    }
 
-	public void setField(String field) {
-		this.field = field;
-	}
+    public String getProperty() {
+        return property;
+    }
 
-	public SortDirectionEnum getDirection() {
-		return direction;
-	}
+    public void setProperty(String property) {
+        this.property = property;
+    }
 
-	public void setDirection(SortDirectionEnum direction) {
-		this.direction = direction;
-	}
+    public SortDirectionEnum getDirection() {
+        return direction;
+    }
+
+    public void setDirection(SortDirectionEnum direction) {
+        this.direction = direction;
+    }
 
 }

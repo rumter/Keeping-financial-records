@@ -3,6 +3,7 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
     alias: 'view.incCategory.IncCategoryPanel',
 
     requires: [
+        'Koala.store.IncCategoryStore',
         'Koala.view.incCategory.IncCategoryController'
     ],
 
@@ -12,8 +13,26 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
-                    html: 'IncCategoryPanel'
+                    xtype: 'gridpanel',
+                    referense: 'incCategoryGrid',
+                    minHeight: 200,
+                    split: true,
+                    store: Ext.create('store.IncCategoryStore'),
+                    columns: [
+                        {
+                            text: 'ID',
+                            dataIndex: 'id',
+                            hidden: true
+                        },
+                        {
+                            text: 'Название',
+                            width: 300,
+                            dataIndex: 'title'
+                        }
+                    ],
+                    listeners: {
+                        select: 'onSelectRow'
+                    }
                 }
             ]
         });
