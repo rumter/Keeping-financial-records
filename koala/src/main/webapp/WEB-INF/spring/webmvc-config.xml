@@ -23,6 +23,9 @@
 
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/styles/**" location="/styles/"/>
+    <mvc:resources mapping="/ExtJS/**" location="/ExtJS/"/>
+    <mvc:resources mapping="/Koala/**" location="/Koala/"/>
+    <mvc:resources mapping="/index.html" location="/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
