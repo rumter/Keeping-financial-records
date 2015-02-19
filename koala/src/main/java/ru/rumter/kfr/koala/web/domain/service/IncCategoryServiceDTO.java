@@ -11,4 +11,8 @@ public interface IncCategoryServiceDTO {
 
     List<IncCategoryDTO> findByCriteria(IncCategoryCriteriaDTO incCategoryCriteriaDTO);
 
+    void save(IncCategoryDTO incCategoryDTO);
+
+    void delete(Long id);
+
 }

@@ -11,4 +11,8 @@ public interface IncCategoryService {
 
     List<IncCategory> findByCriteria(IncCategoryCriteria incCategoryCriteria);
 
+    void save(IncCategory incCategory);
+
+    void delete(Long id);
+
 }

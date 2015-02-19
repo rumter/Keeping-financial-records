@@ -45,14 +45,12 @@ Ext.define('Koala.view.incCategory.IncCategoryController', {
     },
     _save: function () {
         var me = this;
-        var record = {
+        var incCategory = {
             id: me._lookup('incCategoryId').getValue(),
             title: me._lookup('incCategoryTitle').getValue()
         };
         utils.post('incCategory/save', {
-            params: {
-                incCategory: Ext.encode(record)
-            },
+            params: incCategory,
             success: function (response) {
                 me._load();
             }

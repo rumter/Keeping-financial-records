@@ -19,8 +19,9 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
                 {
                     xtype: 'gridpanel',
                     reference: 'incCategoryGrid',
-                    minHeight: 200,
+                    minHeight: 500,
                     split: true,
+                    border: true,
                     store: Ext.create('store.IncCategoryStore'),
                     columns: [
                         {
@@ -72,7 +73,7 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
                             name: 'incCategoryId',
                             fieldLabel: 'ID',
                             padding: 5,
-                            //hidden: true,
+                            hidden: true,
                             width: '99%'
                         },
                         {

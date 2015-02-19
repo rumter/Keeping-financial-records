@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.rumter.kfr.koala.web.domain.criteria.IncCategoryCriteriaDTO;
+import ru.rumter.kfr.koala.web.domain.model.IncCategoryDTO;
 import ru.rumter.kfr.koala.web.domain.service.IncCategoryServiceDTO;
 import ru.rumter.kfr.koala.web.helper.ResponseMap;
 import ru.rumter.kfr.koala.web.helper.ResponseUtils;
@@ -27,6 +28,20 @@ public class IncCategoryController {
         m.put("total", incCategoryServiceDTO.countByCriteria(incCategoryCriteriaDTO));
         m.put("items", incCategoryServiceDTO.findByCriteria(incCategoryCriteriaDTO));
         return ResponseUtils.successResponse(m);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMap save(IncCategoryDTO incCategoryDTO) {
+        incCategoryServiceDTO.save(incCategoryDTO);
+        return ResponseUtils.successResponse();
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseMap delete(Long id) {
+        incCategoryServiceDTO.delete(id);
+        return ResponseUtils.successResponse();
     }
 
 }

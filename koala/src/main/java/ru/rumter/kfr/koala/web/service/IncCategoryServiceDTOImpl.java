@@ -35,4 +35,15 @@ public class IncCategoryServiceDTOImpl implements IncCategoryServiceDTO {
         }
         return res;
     }
+
+    @Override
+    public void save(IncCategoryDTO incCategoryDTO) {
+        incCategoryService.save(incCategoryDTO.fromDTO());
+    }
+
+    @Override
+    public void delete(Long id) {
+        incCategoryService.delete(id);
+    }
+
 }

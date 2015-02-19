@@ -26,4 +26,15 @@ public class IncCategoryServiceImpl implements IncCategoryService {
     public List<IncCategory> findByCriteria(IncCategoryCriteria incCategoryCriteria) {
         return incCategoryRepository.findByCriteria(incCategoryCriteria);
     }
+
+    @Override
+    public void save(IncCategory incCategory) {
+        incCategoryRepository.saveOrUpdate(incCategory);
+    }
+
+    @Override
+    public void delete(Long id) {
+        incCategoryRepository.removeById(id);
+    }
+
 }

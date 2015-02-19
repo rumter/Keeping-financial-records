@@ -23,6 +23,13 @@ public class IncCategoryDTO {
         this.title = title;
     }
 
+    public IncCategory fromDTO() {
+        IncCategory entity = new IncCategory();
+        entity.setId(getId());
+        entity.setTitle(getTitle());
+        return entity;
+    }
+
     public static IncCategoryDTO toDTO(IncCategory entity) {
         IncCategoryDTO dto = new IncCategoryDTO();
         dto.setId(entity.getId());
