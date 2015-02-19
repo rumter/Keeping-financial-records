@@ -9,6 +9,8 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
 
     controller: 'incCategory.IncCategoryController',
 
+    title: 'Категории доходов',
+
     initComponent: function () {
         var me = this;
 
@@ -16,7 +18,7 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
             items: [
                 {
                     xtype: 'gridpanel',
-                    referense: 'incCategoryGrid',
+                    reference: 'incCategoryGrid',
                     minHeight: 200,
                     split: true,
                     store: Ext.create('store.IncCategoryStore'),
@@ -32,9 +34,68 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
                             dataIndex: 'title'
                         }
                     ],
+                    tbar: [
+                        {
+                            xtype: 'button',
+                            reference: 'add',
+                            text: 'Добавить',
+                            handler: 'onAdd'
+                        },
+                        {
+                            xtype: 'button',
+                            reference: 'edit',
+                            text: 'Редактировать',
+                            handler: 'onEdit',
+                            disabled: true
+                        },
+                        {
+                            xtype: 'button',
+                            reference: 'del',
+                            text: 'Удалить',
+                            handler: 'onDel',
+                            disabled: true
+                        }
+                    ],
                     listeners: {
                         select: 'onSelectRow'
                     }
+                },
+                {
+                    xtype: 'form',
+                    reference: 'incCategoryEditForm',
+                    border: true,
+                    defaultType: 'textfield',
+                    disabled: true,
+                    items: [
+                        {
+                            reference: 'incCategoryId',
+                            name: 'incCategoryId',
+                            fieldLabel: 'ID',
+                            padding: 5,
+                            //hidden: true,
+                            width: '99%'
+                        },
+                        {
+                            reference: 'incCategoryTitle',
+                            name: 'incCategoryTitle',
+                            allowBlank: false,
+                            fieldLabel: 'Название',
+                            padding: 5,
+                            width: '99%'
+                        }
+                    ],
+                    buttonAlign: 'left',
+                    buttons: [
+                        {
+                            text: 'Сохранить',
+                            reference: 'submit',
+                            handler: 'onSubmit'
+                        },
+                        {
+                            text: 'Отмена',
+                            handler: 'onCancel'
+                        }
+                    ]
                 }
             ]
         });

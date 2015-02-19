@@ -45,6 +45,10 @@ Ext.define('Koala.view.main.MainPanel', {
         });
 
         me.callParent(arguments);
+    },
+
+    listeners: {
+        afterrender: 'onAfterRender'
     }
 
 });

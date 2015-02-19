@@ -12,6 +12,7 @@ Ext.define('Koala.view.main.MainController', {
      * Действия после отрисовки компонента
      */
     onAfterRender: function () {
+        this.onIncCategoryClick();
     },
 
     /**
