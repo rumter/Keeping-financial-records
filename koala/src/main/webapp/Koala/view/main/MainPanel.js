@@ -26,7 +26,7 @@ Ext.define('Koala.view.main.MainPanel', {
                     listeners: {
                         onIncCategoryClick: 'onIncCategoryClick',
                         onExpTagClick: 'onExpTagClick',
-                        onIncExpClick: 'onIncExpClick'
+                        onIncomeClick: 'onIncomeClick'
                     }
                 }),
                 {

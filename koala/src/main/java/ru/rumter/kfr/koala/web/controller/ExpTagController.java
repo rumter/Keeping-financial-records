@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RequestMapping("/expTag")
 @Controller
-public class ExpTagController {
+public class ExpTagController extends AbstractController {
 
     @Autowired
     ExpTagServiceDTO expTagServiceDTO;

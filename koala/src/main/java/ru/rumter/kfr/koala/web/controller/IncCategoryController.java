@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RequestMapping(value = "/incCategory", produces = "application/json")
 @Controller
-public class IncCategoryController {
+public class IncCategoryController extends AbstractController {
 
     @Autowired
     IncCategoryServiceDTO incCategoryServiceDTO;

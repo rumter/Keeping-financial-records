@@ -12,7 +12,7 @@ Ext.define('Koala.view.main.FormMenuController', {
     },
 
     /**
-     * Нажатие на пункт меню "Категории расходов"
+     * Нажатие на пункт меню "Теги расходов"
      */
     onExpTagClick: function () {
         var me = this;
@@ -21,12 +21,12 @@ Ext.define('Koala.view.main.FormMenuController', {
     },
 
     /**
-     * Нажатие на пункт меню "Доходы и расходы"
+     * Нажатие на пункт меню "Доходы"
      */
-    onIncExpClick: function () {
+    onIncomeClick: function () {
         var me = this;
         var view = me.getView();
-        view.fireEvent("onIncExpClick");
+        view.fireEvent("onIncomeClick");
     }
 
 });

@@ -5,5 +5,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/expense")
 @Controller
-public class ExpenseController {
+public class ExpenseController extends AbstractController {
 }
