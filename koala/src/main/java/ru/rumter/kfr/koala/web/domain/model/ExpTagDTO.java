@@ -1,8 +1,8 @@
 package ru.rumter.kfr.koala.web.domain.model;
 
-import ru.rumter.kfr.koala.domain.entity.exp.ExpCategory;
+import ru.rumter.kfr.koala.domain.entity.exp.ExpTag;
 
-public class ExpCategoryDTO {
+public class ExpTagDTO {
 
     private Long id;
     private String title;
@@ -23,15 +23,15 @@ public class ExpCategoryDTO {
         this.title = title;
     }
 
-    public ExpCategory fromDTO() {
-        ExpCategory entity = new ExpCategory();
+    public ExpTag fromDTO() {
+        ExpTag entity = new ExpTag();
         entity.setId(getId());
         entity.setTitle(getTitle());
         return entity;
     }
 
-    public static ExpCategoryDTO toDTO(ExpCategory entity) {
-        ExpCategoryDTO dto = new ExpCategoryDTO();
+    public static ExpTagDTO toDTO(ExpTag entity) {
+        ExpTagDTO dto = new ExpTagDTO();
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
         return dto;

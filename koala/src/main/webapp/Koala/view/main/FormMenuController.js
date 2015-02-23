@@ -14,10 +14,10 @@ Ext.define('Koala.view.main.FormMenuController', {
     /**
      * Нажатие на пункт меню "Категории расходов"
      */
-    onExpCategoryClick: function () {
+    onExpTagClick: function () {
         var me = this;
         var view = me.getView();
-        view.fireEvent("onExpCategoryClick");
+        view.fireEvent("onExpTagClick");
     },
 
     /**

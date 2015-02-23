@@ -29,11 +29,6 @@ public class Expense extends AbstractEntity {
 	private Long id;
 
 	/**
-	 * Категория расходов
-	 */
-	private ExpCategory expCategory;
-
-	/**
 	 * Дата проведения
 	 */
 	private Date occured;
@@ -58,16 +53,6 @@ public class Expense extends AbstractEntity {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "ec_id", nullable = false)
-	public ExpCategory getExpCategory() {
-		return expCategory;
-	}
-
-	public void setExpCategory(ExpCategory expCategory) {
-		this.expCategory = expCategory;
 	}
 
 	@Column(name = "occured", nullable = false)
@@ -117,7 +102,7 @@ public class Expense extends AbstractEntity {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append(id).append(expCategory).append(occured).append(amount).append(description).toString();
+		return new ToStringBuilder(this).append(id).append(occured).append(amount).append(description).toString();
 	}
 
 }

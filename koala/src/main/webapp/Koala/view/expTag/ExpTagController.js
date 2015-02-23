@@ -1,6 +1,6 @@
-Ext.define('Koala.view.expCategory.ExpCategoryController', {
+Ext.define('Koala.view.expTag.ExpTagController', {
     extend: 'Ext.app.ViewController',
-    alias: 'controller.expCategory.ExpCategoryController',
+    alias: 'controller.expTag.ExpTagController',
 
     _lookup: function (ref) {
         var me = this;
@@ -9,7 +9,7 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
 
     _getSelectedRow: function () {
         var me = this;
-        var selected = me._lookup('expCategoryGrid').getSelectionModel().getSelection();
+        var selected = me._lookup('expTagGrid').getSelectionModel().getSelection();
         if (selected != null && selected.length > 0) {
             return selected[0].data;
         }
@@ -18,21 +18,21 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
 
     _clearAndCancelForm: function () {
         var me = this;
-        me._lookup('expCategoryEditForm').reset();
-        me._lookup('expCategoryEditForm').disable();
+        me._lookup('expTagEditForm').reset();
+        me._lookup('expTagEditForm').disable();
     },
 
     _load: function () {
         var me = this;
-        me._lookup('expCategoryGrid').getStore().load();
+        me._lookup('expTagGrid').getStore().load();
         me._clearAndCancelForm();
     },
     _validate: function () {
         var me = this;
-        me._lookup('expCategoryTitle').focus();
-        var title = me._lookup('expCategoryTitle').getValue();
+        me._lookup('expTagTitle').focus();
+        var title = me._lookup('expTagTitle').getValue();
         if (title == null || title.length == 0) {
-            var label = me._lookup('expCategoryTitle').getFieldLabel();
+            var label = me._lookup('expTagTitle').getFieldLabel();
             Ext.Msg.show({
                 title: 'Форма заполнена неверно',
                 message: 'Необходимо заполнить поле "' + label + '"',
@@ -45,12 +45,12 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
     },
     _save: function () {
         var me = this;
-        var expCategory = {
-            id: me._lookup('expCategoryId').getValue(),
-            title: me._lookup('expCategoryTitle').getValue()
+        var expTag = {
+            id: me._lookup('expTagId').getValue(),
+            title: me._lookup('expTagTitle').getValue()
         };
-        utils.post('expCategory/save', {
-            params: expCategory,
+        utils.post('expTag/save', {
+            params: expTag,
             success: function (response) {
                 me._load();
             }
@@ -60,7 +60,7 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
         var me = this;
         var selectedData = me._getSelectedRow();
         var id = selectedData.id;
-        utils.post('expCategory/delete', {
+        utils.post('expTag/delete', {
             params: {
                 id: id
             },
@@ -90,16 +90,16 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
 
     onAdd: function () {
         var me = this;
-        me._lookup('expCategoryEditForm').reset();
-        me._lookup('expCategoryEditForm').enable();
+        me._lookup('expTagEditForm').reset();
+        me._lookup('expTagEditForm').enable();
     },
     onEdit: function () {
         var me = this;
         var selectedData = me._getSelectedRow();
         if (selectedData != null) {
-            me._lookup('expCategoryId').setValue(selectedData.id);
-            me._lookup('expCategoryTitle').setValue(selectedData.title);
-            me._lookup('expCategoryEditForm').enable();
+            me._lookup('expTagId').setValue(selectedData.id);
+            me._lookup('expTagTitle').setValue(selectedData.title);
+            me._lookup('expTagEditForm').enable();
         } else {
             me._clearAndCancelForm();
         }
@@ -111,7 +111,7 @@ Ext.define('Koala.view.expCategory.ExpCategoryController', {
             var title = selectedData.title;
             Ext.Msg.show({
                 title: 'Удалить запись?',
-                message: 'Вы действительно хотите удалить категорию "' + title + '"',
+                message: 'Вы действительно хотите удалить тег "' + title + '"',
                 buttons: Ext.Msg.YESNO,
                 icon: Ext.Msg.QUESTION,
                 fn: function (btn) {

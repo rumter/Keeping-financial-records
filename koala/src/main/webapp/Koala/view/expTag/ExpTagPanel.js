@@ -1,15 +1,15 @@
-Ext.define('Koala.view.expCategory.ExpCategoryPanel', {
+Ext.define('Koala.view.expTag.ExpTagPanel', {
     extend: 'Ext.panel.Panel',
-    alias: 'view.expCategory.ExpCategoryPanel',
+    alias: 'view.expTag.ExpTagPanel',
 
     requires: [
-        'Koala.store.ExpCategoryStore',
-        'Koala.view.expCategory.ExpCategoryController'
+        'Koala.store.ExpTagStore',
+        'Koala.view.expTag.ExpTagController'
     ],
 
-    controller: 'expCategory.ExpCategoryController',
+    controller: 'expTag.ExpTagController',
 
-    title: 'Категории расходов',
+    title: 'Теги расходов',
 
     initComponent: function () {
         var me = this;
@@ -18,11 +18,11 @@ Ext.define('Koala.view.expCategory.ExpCategoryPanel', {
             items: [
                 {
                     xtype: 'gridpanel',
-                    reference: 'expCategoryGrid',
+                    reference: 'expTagGrid',
                     minHeight: 500,
                     split: true,
                     border: true,
-                    store: Ext.create('store.ExpCategoryStore'),
+                    store: Ext.create('store.ExpTagStore'),
                     columns: [
                         {
                             text: 'ID',
@@ -63,22 +63,22 @@ Ext.define('Koala.view.expCategory.ExpCategoryPanel', {
                 },
                 {
                     xtype: 'form',
-                    reference: 'expCategoryEditForm',
+                    reference: 'expTagEditForm',
                     border: true,
                     defaultType: 'textfield',
                     disabled: true,
                     items: [
                         {
-                            reference: 'expCategoryId',
-                            name: 'expCategoryId',
+                            reference: 'expTagId',
+                            name: 'expTagId',
                             fieldLabel: 'ID',
                             padding: 5,
                             hidden: true,
                             width: '99%'
                         },
                         {
-                            reference: 'expCategoryTitle',
-                            name: 'expCategoryTitle',
+                            reference: 'expTagTitle',
+                            name: 'expTagTitle',
                             allowBlank: false,
                             fieldLabel: 'Название',
                             padding: 5,

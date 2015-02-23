@@ -25,7 +25,7 @@ Ext.define('Koala.view.main.MainPanel', {
                     region: 'west',
                     listeners: {
                         onIncCategoryClick: 'onIncCategoryClick',
-                        onExpCategoryClick: 'onExpCategoryClick',
+                        onExpTagClick: 'onExpTagClick',
                         onIncExpClick: 'onIncExpClick'
                     }
                 }),

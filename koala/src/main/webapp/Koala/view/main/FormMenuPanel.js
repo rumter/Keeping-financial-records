@@ -21,8 +21,8 @@ Ext.define('Koala.view.main.FormMenuPanel', {
             handler: 'onIncCategoryClick'
         },
         {
-            text: 'Категории расходов',
-            handler: 'onExpCategoryClick'
+            text: 'Теги расходов',
+            handler: 'onExpTagClick'
         },
         {
             text: 'Доходы и расходы',

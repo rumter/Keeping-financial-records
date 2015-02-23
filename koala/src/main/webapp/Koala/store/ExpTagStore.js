@@ -1,12 +1,12 @@
-Ext.define('Koala.store.ExpCategoryStore', {
+Ext.define('Koala.store.ExpTagStore', {
     extend: 'Ext.data.Store',
-    alias: 'store.ExpCategoryStore',
+    alias: 'store.ExpTagStore',
 
-    model: 'Koala.model.ExpCategoryModel',
+    model: 'Koala.model.ExpTagModel',
 
     proxy: {
         type: 'ajax',
-        url: 'expCategory/list',
+        url: 'expTag/list',
         reader: {
             type: 'json',
             rootProperty: 'data.items',

@@ -1,6 +1,6 @@
-Ext.define('Koala.model.ExpCategoryModel', {
+Ext.define('Koala.model.ExpTagModel', {
     extend: 'Ext.data.Model',
-    alias: 'model.ExpCategoryModel',
+    alias: 'model.ExpTagModel',
 
     fields: [
         {name: 'id'},

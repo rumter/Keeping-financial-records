@@ -4,7 +4,6 @@ Ext.define('Koala.model.ExpenseModel', {
 
     fields: [
         {name: 'id'},
-        {name: 'expCategoryId'},
         {name: 'occured'},
         {name: 'amount'},
         {name: 'description'}

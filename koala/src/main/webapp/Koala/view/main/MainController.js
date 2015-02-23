@@ -4,7 +4,7 @@ Ext.define('Koala.view.main.MainController', {
 
     requires: [
         'Koala.view.incCategory.IncCategoryPanel',
-        'Koala.view.expCategory.ExpCategoryPanel',
+        'Koala.view.expTag.ExpTagPanel',
         'Koala.view.stream.StreamPanel'
     ],
 
@@ -28,11 +28,11 @@ Ext.define('Koala.view.main.MainController', {
     /**
      * Нажатие на пункт меню "Категории расходов"
      */
-    onExpCategoryClick: function () {
+    onExpTagClick: function () {
         var me = this;
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
-        formHolder.add(Ext.create('view.expCategory.ExpCategoryPanel'));
+        formHolder.add(Ext.create('view.expTag.ExpTagPanel'));
     },
 
     /**

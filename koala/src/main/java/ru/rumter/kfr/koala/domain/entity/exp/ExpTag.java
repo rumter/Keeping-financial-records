@@ -14,11 +14,11 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import ru.rumter.kfr.koala.domain.entity.AbstractEntity;
 
 /**
- * Категория расходов
+ * Тег расходов
  */
 @Entity
-@Table(name = "exp_category")
-public class ExpCategory extends AbstractEntity {
+@Table(name = "exp_tag")
+public class ExpTag extends AbstractEntity {
 
 	private Long id;
 
@@ -28,9 +28,9 @@ public class ExpCategory extends AbstractEntity {
 	private String title;
 
 	@Id
-	@Column(name = "ec_id", nullable = false)
-	@SequenceGenerator(name = "exp_category_seq", sequenceName = "exp_category_seq", allocationSize = 1)
-	@GeneratedValue(generator = "exp_category_seq")
+	@Column(name = "et_id", nullable = false)
+	@SequenceGenerator(name = "exp_tag_seq", sequenceName = "exp_tag_seq", allocationSize = 1)
+	@GeneratedValue(generator = "exp_tag_seq")
 	public Long getId() {
 		return id;
 	}
@@ -56,7 +56,7 @@ public class ExpCategory extends AbstractEntity {
 		if (obj == null || obj.getClass() != getClass()) {
 			return false;
 		}
-		ExpCategory entity = (ExpCategory) obj;
+		ExpTag entity = (ExpTag) obj;
 		return new EqualsBuilder().append(id, entity.id).isEquals();
 	}
 
