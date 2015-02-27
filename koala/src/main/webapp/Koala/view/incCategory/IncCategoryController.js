@@ -1,32 +1,33 @@
 Ext.define('Koala.view.incCategory.IncCategoryController', {
-    extend: 'Ext.app.ViewController',
+    extend: 'Koala.view.BaseController',
     alias: 'controller.incCategory.IncCategoryController',
 
-    _lookup: function (ref) {
-        var me = this;
-        return me.lookupReference(ref);
+    _getGrid: function () {
+        return this._lookup('incCategoryGrid');
+    },
+    _getEditForm: function () {
+        return this._lookup('incCategoryEditForm');
+    },
+    _getAddToolBtn: function () {
+        return this._lookup('add');
+    },
+    _getEditToolBtn: function () {
+        return this._lookup('edit');
+    },
+    _getDelToolBtn: function () {
+        return this._lookup('del');
     },
 
-    _getSelectedRow: function () {
-        var me = this;
-        var selected = me._lookup('incCategoryGrid').getSelectionModel().getSelection();
-        if (selected != null && selected.length > 0) {
-            return selected[0].data;
-        }
-        return null;
+    _getRecordTitle: function (data) {
+        return 'категория: ' + data.title;
     },
 
-    _clearAndCancelForm: function () {
+    _fillEditFormBySelectedData: function (data) {
         var me = this;
-        me._lookup('incCategoryEditForm').reset();
-        me._lookup('incCategoryEditForm').disable();
+        me._lookup('incCategoryId').setValue(data.id);
+        me._lookup('incCategoryTitle').setValue(data.title);
     },
 
-    _load: function () {
-        var me = this;
-        me._lookup('incCategoryGrid').getStore().load();
-        me._clearAndCancelForm();
-    },
     _validate: function () {
         var me = this;
         me._lookup('incCategoryTitle').focus();
@@ -43,6 +44,7 @@ Ext.define('Koala.view.incCategory.IncCategoryController', {
         }
         return true;
     },
+
     _save: function () {
         var me = this;
         var incCategory = {
@@ -56,6 +58,7 @@ Ext.define('Koala.view.incCategory.IncCategoryController', {
             }
         });
     },
+
     _delete: function () {
         var me = this;
         var selectedData = me._getSelectedRow();
@@ -75,66 +78,6 @@ Ext.define('Koala.view.incCategory.IncCategoryController', {
      */
     onAfterRender: function () {
         var me = this;
-    },
-
-    /**
-     * Выбор записи в таблице
-     *
-     * @param selection
-     */
-    onSelectRow: function (sel, selectedData) {
-        var me = this;
-        me._lookup('edit').enable();
-        me._lookup('del').enable();
-    },
-
-    onAdd: function () {
-        var me = this;
-        me._lookup('incCategoryEditForm').reset();
-        me._lookup('incCategoryEditForm').enable();
-    },
-    onEdit: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            me._lookup('incCategoryId').setValue(selectedData.id);
-            me._lookup('incCategoryTitle').setValue(selectedData.title);
-            me._lookup('incCategoryEditForm').enable();
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-    onDel: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            var title = selectedData.title;
-            Ext.Msg.show({
-                title: 'Удалить запись?',
-                message: 'Вы действительно хотите удалить категорию "' + title + '"',
-                buttons: Ext.Msg.YESNO,
-                icon: Ext.Msg.QUESTION,
-                fn: function (btn) {
-                    if (btn == 'yes') {
-                        me._delete();
-                    }
-                }
-            });
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-
-    onCancel: function () {
-        var me = this;
-        me._clearAndCancelForm();
-    },
-
-    onSubmit: function () {
-        var me = this;
-        if (me._validate()) {
-            me._save();
-        }
     }
 
 });

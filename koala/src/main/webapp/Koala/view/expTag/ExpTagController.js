@@ -1,32 +1,33 @@
 Ext.define('Koala.view.expTag.ExpTagController', {
-    extend: 'Ext.app.ViewController',
+    extend: 'Koala.view.BaseController',
     alias: 'controller.expTag.ExpTagController',
 
-    _lookup: function (ref) {
-        var me = this;
-        return me.lookupReference(ref);
+    _getGrid: function () {
+        return this._lookup('expTagGrid');
+    },
+    _getEditForm: function () {
+        return this._lookup('expTagEditForm');
+    },
+    _getAddToolBtn: function () {
+        return this._lookup('add');
+    },
+    _getEditToolBtn: function () {
+        return this._lookup('edit');
+    },
+    _getDelToolBtn: function () {
+        return this._lookup('del');
     },
 
-    _getSelectedRow: function () {
-        var me = this;
-        var selected = me._lookup('expTagGrid').getSelectionModel().getSelection();
-        if (selected != null && selected.length > 0) {
-            return selected[0].data;
-        }
-        return null;
+    _getRecordTitle: function (data) {
+        return 'тег: ' + data.title;
     },
 
-    _clearAndCancelForm: function () {
+    _fillEditFormBySelectedData: function (data) {
         var me = this;
-        me._lookup('expTagEditForm').reset();
-        me._lookup('expTagEditForm').disable();
+        me._lookup('expTagId').setValue(data.id);
+        me._lookup('expTagTitle').setValue(data.title);
     },
 
-    _load: function () {
-        var me = this;
-        me._lookup('expTagGrid').getStore().load();
-        me._clearAndCancelForm();
-    },
     _validate: function () {
         var me = this;
         me._lookup('expTagTitle').focus();
@@ -43,6 +44,7 @@ Ext.define('Koala.view.expTag.ExpTagController', {
         }
         return true;
     },
+
     _save: function () {
         var me = this;
         var expTag = {
@@ -56,6 +58,7 @@ Ext.define('Koala.view.expTag.ExpTagController', {
             }
         });
     },
+
     _delete: function () {
         var me = this;
         var selectedData = me._getSelectedRow();
@@ -75,66 +78,6 @@ Ext.define('Koala.view.expTag.ExpTagController', {
      */
     onAfterRender: function () {
         var me = this;
-    },
-
-    /**
-     * Выбор записи в таблице
-     *
-     * @param selection
-     */
-    onSelectRow: function (sel, selectedData) {
-        var me = this;
-        me._lookup('edit').enable();
-        me._lookup('del').enable();
-    },
-
-    onAdd: function () {
-        var me = this;
-        me._lookup('expTagEditForm').reset();
-        me._lookup('expTagEditForm').enable();
-    },
-    onEdit: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            me._lookup('expTagId').setValue(selectedData.id);
-            me._lookup('expTagTitle').setValue(selectedData.title);
-            me._lookup('expTagEditForm').enable();
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-    onDel: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            var title = selectedData.title;
-            Ext.Msg.show({
-                title: 'Удалить запись?',
-                message: 'Вы действительно хотите удалить тег "' + title + '"',
-                buttons: Ext.Msg.YESNO,
-                icon: Ext.Msg.QUESTION,
-                fn: function (btn) {
-                    if (btn == 'yes') {
-                        me._delete();
-                    }
-                }
-            });
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-
-    onCancel: function () {
-        var me = this;
-        me._clearAndCancelForm();
-    },
-
-    onSubmit: function () {
-        var me = this;
-        if (me._validate()) {
-            me._save();
-        }
     }
 
 });
