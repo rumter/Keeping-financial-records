@@ -79,6 +79,20 @@ Ext.define('Koala.view.income.IncomeController', {
         }
         return true;
     },
+    _fillEditFormBySelected: function () {
+        var me = this;
+        var selectedData = me._getSelectedRow();
+        if (selectedData != null) {
+            var data = me._lookup('incomeGrid').getStore().getById(selectedData.id).data;
+            me._lookup('incomeId').setValue(data.id);
+            me._lookup('incCategoryId').setValue(data.incCategoryId);
+            me._lookup('occured').setValue(me._formatDateForView(data.occured));
+            me._lookup('amount').setValue(data.amount);
+            me._lookup('description').setValue(data.description);
+        } else {
+            me._clearAndCancelForm();
+        }
+    },
     _save: function () {
         var me = this;
         var income = {
@@ -125,6 +139,7 @@ Ext.define('Koala.view.income.IncomeController', {
         var me = this;
         me._lookup('edit').enable();
         me._lookup('del').enable();
+        me._fillEditFormBySelected();
     },
 
     onAdd: function () {
@@ -136,11 +151,7 @@ Ext.define('Koala.view.income.IncomeController', {
         var me = this;
         var selectedData = me._getSelectedRow();
         if (selectedData != null) {
-            me._lookup('incomeId').setValue(selectedData.id);
-            me._lookup('incCategoryId').setValue(selectedData.incCategoryId);
-            me._lookup('occured').setValue(me._formatDateForView(selectedData.occured));
-            me._lookup('amount').setValue(selectedData.amount);
-            //me._lookup('description').setValue(selectedData.description);
+            me._fillEditFormBySelected();
             me._lookup('incomeEditForm').enable();
         } else {
             me._clearAndCancelForm();
