@@ -4,6 +4,7 @@ Ext.define('Koala.view.income.IncomePanel', {
 
     requires: [
         'Koala.store.IncomeStore',
+        'Koala.store.IncCategoryStore',
         'Koala.view.income.IncomeController'
     ],
 
@@ -100,8 +101,13 @@ Ext.define('Koala.view.income.IncomePanel', {
                         {
                             reference: 'incCategoryId',
                             name: 'incCategoryId',
+                            xtype: 'combobox',
                             allowBlank: false,
-                            fieldLabel: 'Категория'
+                            fieldLabel: 'Категория',
+                            store: Ext.create('store.IncCategoryStore'),
+                            queryModel: 'local',
+                            displayField: 'title',
+                            valueField: 'id'
                         },
                         {
                             reference: 'occured',
