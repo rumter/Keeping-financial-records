@@ -9,7 +9,7 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
 
     controller: 'incCategory.IncCategoryController',
 
-    title: 'Категории доходов',
+    //title: 'Категории доходов',
 
     initComponent: function () {
         var me = this;
@@ -19,7 +19,7 @@ Ext.define('Koala.view.incCategory.IncCategoryPanel', {
                 {
                     xtype: 'gridpanel',
                     reference: 'incCategoryGrid',
-                    minHeight: 500,
+                    minHeight: 400,
                     split: true,
                     border: true,
                     store: Ext.create('store.IncCategoryStore'),

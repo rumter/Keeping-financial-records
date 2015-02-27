@@ -24,6 +24,7 @@ Ext.define('Koala.view.main.MainController', {
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
         formHolder.add(Ext.create('view.incCategory.IncCategoryPanel'));
+        me.getView().setTitle("Koala :: Категории доходов");
     },
 
     /**
@@ -34,6 +35,7 @@ Ext.define('Koala.view.main.MainController', {
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
         formHolder.add(Ext.create('view.expTag.ExpTagPanel'));
+        me.getView().setTitle("Koala :: Теги расходов");
     },
 
     /**
@@ -44,6 +46,7 @@ Ext.define('Koala.view.main.MainController', {
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
         formHolder.add(Ext.create('view.income.IncomePanel'));
+        me.getView().setTitle("Koala :: Доходы");
     },
 
     /**
@@ -54,6 +57,7 @@ Ext.define('Koala.view.main.MainController', {
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
         formHolder.add(Ext.create('view.expense.ExpensePanel'));
+        me.getView().setTitle("Koala :: Расходы");
     }
 
 });

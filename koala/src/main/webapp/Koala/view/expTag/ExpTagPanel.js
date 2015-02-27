@@ -9,7 +9,7 @@ Ext.define('Koala.view.expTag.ExpTagPanel', {
 
     controller: 'expTag.ExpTagController',
 
-    title: 'Теги расходов',
+    //title: 'Теги расходов',
 
     initComponent: function () {
         var me = this;
@@ -19,7 +19,7 @@ Ext.define('Koala.view.expTag.ExpTagPanel', {
                 {
                     xtype: 'gridpanel',
                     reference: 'expTagGrid',
-                    minHeight: 500,
+                    minHeight: 400,
                     split: true,
                     border: true,
                     store: Ext.create('store.ExpTagStore'),

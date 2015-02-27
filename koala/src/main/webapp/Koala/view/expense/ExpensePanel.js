@@ -9,7 +9,7 @@ Ext.define('Koala.view.expense.ExpensePanel', {
 
     controller: 'expense.ExpenseController',
 
-    title: 'Расходы',
+    //title: 'Расходы',
 
     initComponent: function () {
         var me = this;
@@ -20,7 +20,7 @@ Ext.define('Koala.view.expense.ExpensePanel', {
                     xtype: 'gridpanel',
                     reference: 'expenseGrid',
                     id: 'expenseGrid',
-                    minHeight: 300,
+                    minHeight: 400,
                     split: true,
                     border: true,
                     store: Ext.create('store.ExpenseStore'),

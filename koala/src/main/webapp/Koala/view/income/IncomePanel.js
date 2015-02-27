@@ -9,7 +9,7 @@ Ext.define('Koala.view.income.IncomePanel', {
 
     controller: 'income.IncomeController',
 
-    title: 'Доходы',
+    //title: 'Доходы',
 
     initComponent: function () {
         var me = this;
@@ -20,7 +20,7 @@ Ext.define('Koala.view.income.IncomePanel', {
                     xtype: 'gridpanel',
                     reference: 'incomeGrid',
                     id: 'incomeGrid',
-                    minHeight: 300,
+                    minHeight: 400,
                     split: true,
                     border: true,
                     store: Ext.create('store.IncomeStore'),
