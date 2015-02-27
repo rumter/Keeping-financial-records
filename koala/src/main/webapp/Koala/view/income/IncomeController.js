@@ -1,41 +1,36 @@
 Ext.define('Koala.view.income.IncomeController', {
-    extend: 'Ext.app.ViewController',
+    extend: 'Koala.view.BaseController',
     alias: 'controller.income.IncomeController',
 
-    _lookup: function (ref) {
+    _getGrid: function () {
+        return this._lookup('incomeGrid');
+    },
+    _getEditForm: function () {
+        return this._lookup('incomeEditForm');
+    },
+    _getAddToolBtn: function () {
+        return this._lookup('add');
+    },
+    _getEditToolBtn: function () {
+        return this._lookup('edit');
+    },
+    _getDelToolBtn: function () {
+        return this._lookup('del');
+    },
+
+    _getRecordTitle: function (data) {
+        return 'категория: "' + data.incCategoryTitle + '", дата: "' + this._formatDateForView(data.occured) + '", сумма: "' + data.amount + '"';
+    },
+
+    _fillEditFormBySelectedData: function (data) {
         var me = this;
-        return me.lookupReference(ref);
+        me._lookup('incomeId').setValue(data.id);
+        me._lookup('incCategoryId').setValue(data.incCategoryId);
+        me._lookup('occured').setValue(me._formatDateForView(data.occured));
+        me._lookup('amount').setValue(data.amount);
+        me._lookup('description').setValue(data.description);
     },
 
-    _formatDateForView: function (timestamp) {
-        var date = Ext.Date.add(new Date(timestamp), Ext.Date.HOUR, 12);
-        return Ext.Date.format(date, utils.DATE_FORMAT);
-    },
-
-    _formatDateForSave: function (dateTime) {
-        return Ext.Date.format(new Date(dateTime), utils.DATE_TIME_FORMAT);
-    },
-
-    _getSelectedRow: function () {
-        var me = this;
-        var selected = me._lookup('incomeGrid').getSelectionModel().getSelection();
-        if (selected != null && selected.length > 0) {
-            return selected[0].data;
-        }
-        return null;
-    },
-
-    _clearAndCancelForm: function () {
-        var me = this;
-        me._lookup('incomeEditForm').reset();
-        me._lookup('incomeEditForm').disable();
-    },
-
-    _load: function () {
-        var me = this;
-        me._lookup('incomeGrid').getStore().load();
-        me._clearAndCancelForm();
-    },
     _validate: function () {
         var me = this;
 
@@ -79,20 +74,7 @@ Ext.define('Koala.view.income.IncomeController', {
         }
         return true;
     },
-    _fillEditFormBySelected: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            var data = me._lookup('incomeGrid').getStore().getById(selectedData.id).data;
-            me._lookup('incomeId').setValue(data.id);
-            me._lookup('incCategoryId').setValue(data.incCategoryId);
-            me._lookup('occured').setValue(me._formatDateForView(data.occured));
-            me._lookup('amount').setValue(data.amount);
-            me._lookup('description').setValue(data.description);
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
+
     _save: function () {
         var me = this;
         var income = {
@@ -109,6 +91,7 @@ Ext.define('Koala.view.income.IncomeController', {
             }
         });
     },
+
     _delete: function () {
         var me = this;
         var selectedData = me._getSelectedRow();
@@ -128,66 +111,6 @@ Ext.define('Koala.view.income.IncomeController', {
      */
     onAfterRender: function () {
         var me = this;
-    },
-
-    /**
-     * Выбор записи в таблице
-     *
-     * @param selection
-     */
-    onSelectRow: function (sel, selectedData) {
-        var me = this;
-        me._lookup('edit').enable();
-        me._lookup('del').enable();
-        me._fillEditFormBySelected();
-    },
-
-    onAdd: function () {
-        var me = this;
-        me._lookup('incomeEditForm').reset();
-        me._lookup('incomeEditForm').enable();
-    },
-    onEdit: function () {
-        var me = this;
-        var selectedData = me._getSelectedRow();
-        if (selectedData != null) {
-            me._fillEditFormBySelected();
-            me._lookup('incomeEditForm').enable();
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-    onDel: function () {
-        var me = this;
-        var data = me._getSelectedRow();
-        if (data != null) {
-            var title = 'категория: "' + data.incCategoryTitle + '", дата: "' + me._formatDateForView(data.occured) + '", сумма: "' + data.amount + '"';
-            Ext.Msg.show({
-                title: 'Удалить запись?',
-                message: 'Вы действительно хотите удалить запись ' + title,
-                buttons: Ext.Msg.YESNO,
-                icon: Ext.Msg.QUESTION,
-                fn: function (btn) {
-                    if (btn == 'yes') {
-                        me._delete();
-                    }
-                }
-            });
-        } else {
-            me._clearAndCancelForm();
-        }
-    },
-
-    onCancel: function () {
-        var me = this;
-        me._clearAndCancelForm();
-    },
-
-    onSubmit: function () {
-        var me = this;
-        if (me._validate()) {
-            me._save();
-        }
     }
 
 });
