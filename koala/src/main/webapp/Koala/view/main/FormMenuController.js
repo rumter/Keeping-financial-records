@@ -27,6 +27,15 @@ Ext.define('Koala.view.main.FormMenuController', {
         var me = this;
         var view = me.getView();
         view.fireEvent("onIncomeClick");
+    },
+
+    /**
+     * Нажатие на пункт меню "Расходы"
+     */
+    onExpenseClick: function () {
+        var me = this;
+        var view = me.getView();
+        view.fireEvent("onExpenseClick");
     }
 
 });

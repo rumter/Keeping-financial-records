@@ -1,15 +1,15 @@
-Ext.define('Koala.view.income.IncomePanel', {
+Ext.define('Koala.view.expense.ExpensePanel', {
     extend: 'Ext.panel.Panel',
-    alias: 'view.income.IncomePanel',
+    alias: 'view.expense.ExpensePanel',
 
     requires: [
-        'Koala.store.IncomeStore',
-        'Koala.view.income.IncomeController'
+        'Koala.store.ExpenseStore',
+        'Koala.view.expense.ExpenseController'
     ],
 
-    controller: 'income.IncomeController',
+    controller: 'expense.ExpenseController',
 
-    title: 'Доходы',
+    title: 'Расходы',
 
     initComponent: function () {
         var me = this;
@@ -18,12 +18,12 @@ Ext.define('Koala.view.income.IncomePanel', {
             items: [
                 {
                     xtype: 'gridpanel',
-                    reference: 'incomeGrid',
-                    id: 'incomeGrid',
+                    reference: 'expenseGrid',
+                    id: 'expenseGrid',
                     minHeight: 300,
                     split: true,
                     border: true,
-                    store: Ext.create('store.IncomeStore'),
+                    store: Ext.create('store.ExpenseStore'),
                     defaults: {
                         width: 200
                     },
@@ -32,15 +32,6 @@ Ext.define('Koala.view.income.IncomePanel', {
                             text: 'ID',
                             dataIndex: 'id',
                             hidden: true
-                        },
-                        {
-                            text: 'ID категории',
-                            dataIndex: 'incCategoryId',
-                            hidden: true
-                        },
-                        {
-                            text: 'Категория',
-                            dataIndex: 'incCategoryTitle'
                         },
                         {
                             text: 'Дата',
@@ -82,7 +73,7 @@ Ext.define('Koala.view.income.IncomePanel', {
                 },
                 {
                     xtype: 'form',
-                    reference: 'incomeEditForm',
+                    reference: 'expenseEditForm',
                     border: true,
                     defaultType: 'textfield',
                     disabled: true,
@@ -92,16 +83,10 @@ Ext.define('Koala.view.income.IncomePanel', {
                     },
                     items: [
                         {
-                            reference: 'incomeId',
-                            name: 'incomeId',
+                            reference: 'expenseId',
+                            name: 'expenseId',
                             fieldLabel: 'ID',
                             hidden: true
-                        },
-                        {
-                            reference: 'incCategoryId',
-                            name: 'incCategoryId',
-                            allowBlank: false,
-                            fieldLabel: 'Категория'
                         },
                         {
                             reference: 'occured',

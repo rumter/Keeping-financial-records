@@ -11,8 +11,7 @@ Ext.define('Koala.view.main.MainPanel', {
 
     layout: 'border',
 
-    defaults: {
-    },
+    defaults: {},
 
     title: 'Koala',
 
@@ -26,7 +25,8 @@ Ext.define('Koala.view.main.MainPanel', {
                     listeners: {
                         onIncCategoryClick: 'onIncCategoryClick',
                         onExpTagClick: 'onExpTagClick',
-                        onIncomeClick: 'onIncomeClick'
+                        onIncomeClick: 'onIncomeClick',
+                        onExpenseClick: 'onExpenseClick'
                     }
                 }),
                 {

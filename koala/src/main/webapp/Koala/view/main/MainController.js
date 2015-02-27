@@ -5,7 +5,8 @@ Ext.define('Koala.view.main.MainController', {
     requires: [
         'Koala.view.incCategory.IncCategoryPanel',
         'Koala.view.expTag.ExpTagPanel',
-        'Koala.view.income.IncomePanel'
+        'Koala.view.income.IncomePanel',
+        'Koala.view.expense.ExpensePanel'
     ],
 
     /**
@@ -36,13 +37,23 @@ Ext.define('Koala.view.main.MainController', {
     },
 
     /**
-     * Нажатие на пункт меню "Доходы и расходы"
+     * Нажатие на пункт меню "Доходы"
      */
     onIncomeClick: function () {
         var me = this;
         var formHolder = me.lookupReference('formHolder');
         formHolder.removeAll();
         formHolder.add(Ext.create('view.income.IncomePanel'));
+    },
+
+    /**
+     * Нажатие на пункт меню "Расходы"
+     */
+    onExpenseClick: function () {
+        var me = this;
+        var formHolder = me.lookupReference('formHolder');
+        formHolder.removeAll();
+        formHolder.add(Ext.create('view.expense.ExpensePanel'));
     }
 
 });

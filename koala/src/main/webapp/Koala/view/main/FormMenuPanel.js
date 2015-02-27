@@ -27,6 +27,10 @@ Ext.define('Koala.view.main.FormMenuPanel', {
         {
             text: 'Доходы',
             handler: 'onIncomeClick'
+        },
+        {
+            text: 'Расходы',
+            handler: 'onExpenseClick'
         }
     ]
 
