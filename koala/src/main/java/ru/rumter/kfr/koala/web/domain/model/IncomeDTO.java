@@ -1,18 +1,21 @@
 package ru.rumter.kfr.koala.web.domain.model;
 
-import java.util.Date;
-
-import ru.rumter.kfr.koala.domain.entity.inc.Income;
+import org.springframework.format.annotation.DateTimeFormat;
 import ru.rumter.kfr.koala.domain.entity.inc.IncCategory;
+import ru.rumter.kfr.koala.domain.entity.inc.Income;
+
+import java.util.Date;
 
 public class IncomeDTO {
 
     private Long id;
     private Long incCategoryId;
     private String incCategoryTitle;
-    private Date occured;
     private Long amount;
     private String description;
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm")
+    private Date occured;
 
     public Long getId() {
         return id;

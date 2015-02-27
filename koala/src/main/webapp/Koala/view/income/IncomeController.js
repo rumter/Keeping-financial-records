@@ -7,6 +7,15 @@ Ext.define('Koala.view.income.IncomeController', {
         return me.lookupReference(ref);
     },
 
+    _formatDateForView: function (timestamp) {
+        var date = Ext.Date.add(new Date(timestamp), Ext.Date.HOUR, 12);
+        return Ext.Date.format(date, utils.DATE_FORMAT);
+    },
+
+    _formatDateForSave: function (dateTime) {
+        return Ext.Date.format(new Date(dateTime), utils.DATE_TIME_FORMAT);
+    },
+
     _getSelectedRow: function () {
         var me = this;
         var selected = me._lookup('incomeGrid').getSelectionModel().getSelection();
@@ -75,7 +84,7 @@ Ext.define('Koala.view.income.IncomeController', {
         var income = {
             id: me._lookup('incomeId').getValue(),
             incCategoryId: me._lookup('incCategoryId').getValue(),
-            occured: me._lookup('occured').getValue(),
+            occured: me._formatDateForSave(me._lookup('occured').getValue()),
             amount: me._lookup('amount').getValue(),
             description: me._lookup('description').getValue()
         };
@@ -129,7 +138,7 @@ Ext.define('Koala.view.income.IncomeController', {
         if (selectedData != null) {
             me._lookup('incomeId').setValue(selectedData.id);
             me._lookup('incCategoryId').setValue(selectedData.incCategoryId);
-            me._lookup('occured').setValue(selectedData.occured);
+            me._lookup('occured').setValue(me._formatDateForView(selectedData.occured));
             me._lookup('amount').setValue(selectedData.amount);
             //me._lookup('description').setValue(selectedData.description);
             me._lookup('incomeEditForm').enable();
@@ -141,7 +150,7 @@ Ext.define('Koala.view.income.IncomeController', {
         var me = this;
         var data = me._getSelectedRow();
         if (data != null) {
-            var title = 'категория: "' + data.incCategoryTitle + '", дата: "' + data.occured + '", сумма: "' + data.amount + '"';
+            var title = 'категория: "' + data.incCategoryTitle + '", дата: "' + me._formatDateForView(data.occured) + '", сумма: "' + data.amount + '"';
             Ext.Msg.show({
                 title: 'Удалить запись?',
                 message: 'Вы действительно хотите удалить запись ' + title,

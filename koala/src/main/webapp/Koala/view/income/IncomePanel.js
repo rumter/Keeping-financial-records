@@ -25,7 +25,7 @@ Ext.define('Koala.view.income.IncomePanel', {
                     border: true,
                     store: Ext.create('store.IncomeStore'),
                     defaults: {
-                        width: 200,
+                        width: 200
                     },
                     columns: [
                         {
@@ -40,11 +40,14 @@ Ext.define('Koala.view.income.IncomePanel', {
                         },
                         {
                             text: 'Категория',
-                            dataIndex: 'incCategoryTitle',
+                            dataIndex: 'incCategoryTitle'
                         },
                         {
                             text: 'Дата',
-                            dataIndex: 'occured'
+                            dataIndex: 'occured',
+                            renderer: function (value) {
+                                return me.getController()._formatDateForView(value);
+                            }
                         },
                         {
                             text: 'Сумма',
@@ -105,7 +108,9 @@ Ext.define('Koala.view.income.IncomePanel', {
                             name: 'occured',
                             xtype: 'datefield',
                             allowBlank: false,
-                            fieldLabel: 'Дата'
+                            fieldLabel: 'Дата',
+                            value: new Date(),
+                            format: utils.DATE_FORMAT
                         },
                         {
                             reference: 'amount',
